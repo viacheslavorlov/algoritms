@@ -35,7 +35,12 @@ console.log(binarySearch(my_list, -1)); // -1
 //* рекурсивная функция для бинарного поиска
 //* arr[0] <= item <= arr[arr.length - 1]
 function recursiveBinarySearch<T>(arr: T[], item: T, start: number = 0, end: number): number {
-    let middle = Math.floor((start + end) / 2);
+    let middle;
+    if (start <= end) {
+        middle = Math.floor((start + end) / 2);
+    } else {
+        return -1;
+    }
     if (item === arr[middle]) {
         return middle;
     }
@@ -48,4 +53,4 @@ function recursiveBinarySearch<T>(arr: T[], item: T, start: number = 0, end: num
 
 console.log(recursiveBinarySearch(my_list, 103, 0, my_list.length)); //* 7
 
-console.log(recursiveBinarySearch(my_list, 1000, 0, my_list.length)); //* 7
+console.log(recursiveBinarySearch(my_list, 1000, 0, my_list.length)); //* -1
